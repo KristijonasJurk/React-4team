@@ -1,16 +1,11 @@
 import React from 'react';
+import rowInformation from "./data"
 import TableHeader from './TableHeader'
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import TableBody from '@material-ui/core/TableBody';
 import Table from '@material-ui/core/Table';
 import TablePagination from '@material-ui/core/TablePagination';
 import { TableContainer } from '@material-ui/core';
-
-const rowInformation = [
-    { "name": "Bob Johnson", age: 50 },
-    { "name": "Bobby John", age: 40 }
-]
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -42,7 +37,7 @@ export default function TableContent() {
     const [orderDirection, setOrderDirection] = React.useState('asc')
     const [valueToOrderBy, setValueToOrderBy] = React.useState('name')
     const [page, setPage] = React.useState(0)
-    const [rowsPerPage, setRowsPerPage] = React.useState(1)
+    const [rowsPerPage, setRowsPerPage] = React.useState(5)
 
     const handleRequestSort = (event, property) => {
         const isAscending = (valueToOrderBy === property && orderDirection === 'asc')
@@ -71,10 +66,22 @@ export default function TableContent() {
                         sortedRowInformation(rowInformation, getComperator(orderDirection, valueToOrderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((person, index) => (
                             <TableRow key={index}>
                                 <TableCell>
+                                    {person.id}
+                                </TableCell>
+                                <TableCell>
                                     {person.name}
                                 </TableCell>
                                 <TableCell>
-                                    {person.age}
+                                    {person.categories}
+                                </TableCell>
+                                <TableCell>
+                                    {person.creationDate}
+                                </TableCell>
+                                <TableCell>
+                                    {person.price}
+                                </TableCell>
+                                <TableCell>
+                                    {person.currency}
                                 </TableCell>
                             </TableRow>
                         ))

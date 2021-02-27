@@ -15,6 +15,15 @@ export default function TableHeader(props) {
     return (
         <TableHead>
             <TableRow>
+                <TableCell keys='id'>
+                    <TableSortLabel
+                        active={valueToOrderBy === "id"}
+                        direction={valueToOrderBy === 'id' ? orderDirection : 'asc'}
+                        onClick={createSortHandler("id")}
+                    >
+                        Id
+                    </TableSortLabel>
+                </TableCell>
                 <TableCell keys='name'>
                     <TableSortLabel
                         active={valueToOrderBy === "name"}
@@ -24,13 +33,40 @@ export default function TableHeader(props) {
                         Name
                     </TableSortLabel>
                 </TableCell>
-                <TableCell keys='age'>
+                <TableCell keys='categories'>
                     <TableSortLabel
-                        active={valueToOrderBy === "age"}
-                        direction={valueToOrderBy === 'age' ? orderDirection : 'asc'}
-                        onClick={createSortHandler("age")}
+                        active={valueToOrderBy === "categories"}
+                        direction={valueToOrderBy === 'categories' ? orderDirection : 'asc'}
+                        onClick={createSortHandler("categories")}
                     >
-                        Age
+                        Categories
+                    </TableSortLabel>
+                </TableCell>
+                <TableCell keys='creationDate'>
+                    <TableSortLabel
+                        active={valueToOrderBy === "creationDate"}
+                        direction={valueToOrderBy === 'creationDate' ? orderDirection : 'asc'}
+                        onClick={createSortHandler("creationDate")}
+                    >
+                        Creation date
+                    </TableSortLabel>
+                </TableCell>
+                <TableCell keys='price'>
+                    <TableSortLabel
+                        active={valueToOrderBy === "price"}
+                        direction={valueToOrderBy === 'price' ? orderDirection : 'asc'}
+                        onClick={createSortHandler("price")}
+                    >
+                        Price
+                    </TableSortLabel>
+                </TableCell>
+                <TableCell keys='currency'>
+                    <TableSortLabel
+                        active={valueToOrderBy === "currency"}
+                        direction={valueToOrderBy === 'currency' ? orderDirection : 'asc'}
+                        onClick={createSortHandler("currency")}
+                    >
+                        Currency
                     </TableSortLabel>
                 </TableCell>
             </TableRow>
